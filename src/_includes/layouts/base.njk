@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ site.description }}">
+    <meta name="author" content="{{ site.author }}">
+    <title>{{ title or site.title + " - " + dojo.name }}</title>
+    
+    <!-- Tailwind CSS 4 -->
+    <link rel="stylesheet" href="/styles.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/styles.css" as="style">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="preconnect" href="https://connect.facebook.net">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '{{ analytics.meta_pixel_id }}');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" class="hidden"
+    src="https://www.facebook.com/tr?id={{ analytics.meta_pixel_id }}&ev=PageView&noscript=1"
+    /></noscript>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ analytics.google_analytics_id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ analytics.google_analytics_id }}', {
+        page_title: '{{ title or site.title }}',
+        page_location: '{{ site.url }}{{ page.url }}',
+        custom_map: {
+          custom_parameter_1: 'dojo_location_page'
+        }
+      });
+    </script>
+    
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title or site.title }}">
+    <meta property="og:description" content="{{ site.description }}">
+    <meta property="og:image" content="{{ site.url }}/static/logo.png">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:site_name" content="{{ dojo.name }}">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="{{ social.twitter }}">
+    <meta name="twitter:title" content="{{ title or site.title }}">
+    <meta name="twitter:description" content="{{ site.description }}">
+    <meta name="twitter:image" content="{{ site.url }}/static/logo.png">
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-TileColor" content="#667eea">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-dojo-primary to-dojo-secondary flex items-center justify-center p-5 font-sans antialiased">
+    {{ content | safe }}
+    
+    <script src="/static/map-redirect.js"></script>
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsActivityLocation",
+      "name": "{{ dojo.name }}",
+      "description": "{{ dojo.description }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ dojo.address }}"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": {{ dojo.coordinates.lat }},
+        "longitude": {{ dojo.coordinates.lng }}
+      },
+      "telephone": "{{ dojo.phone }}",
+      "email": "{{ dojo.email }}",
+      "url": "{{ site.url }}",
+      "sameAs": [
+        "https://instagram.com/{{ social.instagram | replace('@', '') }}",
+        "https://facebook.com/{{ social.facebook }}",
+        "https://twitter.com/{{ social.twitter | replace('@', '') }}"
+      ],
+      "openingHours": "Mo-Fr 18:00-21:00, Sa 09:00-12:00",
+      "priceRange": "$$"
+    }
+    </script>
+</body>
+</html>

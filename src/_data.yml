@@ -1,0 +1,26 @@
+dojo:
+  name: "Excel Combat Academy"
+  address: "491 Ave Kennedy, Aguadilla, 00690, Puerto Rico"
+  coordinates:
+    lat: "18.492365955736297"
+    lng: "-67.0976189957086"
+  phone: "+1 (787) 529-0311"
+  email: "info@excelcombat.com"
+  description: "At Excel Combat Academy, we believe that Muay Thai and Brazilian Jiu-Jitsu are for everyone, no matter your background or fitness level! Our 2023-founded academy offers classes that focus on self-defense, confidence-building, and personal growth not just competition."
+  
+analytics:
+  google_analytics_id: "GA_MEASUREMENT_ID"
+  meta_pixel_id: "YOUR_PIXEL_ID"
+  
+social:
+  instagram: "@excelcombat"
+  facebook: "Excel-Combat-Academy-61551022550959"
+  # twitter: "@excelcombat"
+
+site:
+  title: "Find Our Dojo"
+  description: "Get directions to Excel Combat Academy - never get lost again!"
+  # url: "https://directions.excelcombat.com"
+  url: "http://localhost:3000"
+  logo: "/static/logo.png"
+  author: "Excel Combat Academy"

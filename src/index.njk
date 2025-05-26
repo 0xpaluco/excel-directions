@@ -1,0 +1,147 @@
+---
+layout: layouts/base.njk
+title: Find Our Dojo
+---
+
+<main class="bg-white rounded-3xl p-8 sm:p-10 text-center shadow-2xl max-w-md w-full relative overflow-hidden backdrop-blur-sm border border-white/20">
+    <!-- Decorative background elements -->
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-dojo-primary/5 to-dojo-secondary/5 pointer-events-none"></div>
+    <div class="absolute -top-4 -right-4 w-24 h-24 bg-dojo-accent/10 rounded-full blur-xl animate-pulse-slow"></div>
+    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-dojo-primary/10 rounded-full blur-xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+    
+    <!-- Content -->
+    <div class="relative z-10">
+        <span class="text-6xl mb-6 block animate-float" role="img" aria-label="Excel Combat logo">
+            <img class="align-middle mx-auto" role="logo" src="static/logo.png"/>
+        </span>
+            
+        <h1 class="text-gray-800 mb-4 text-2xl font-bold tracking-tight">Find Our Dojo</h1>
+        
+        <div class="text-gray-600 mb-8 text-base leading-relaxed">
+            <h2><strong class="text-gray-800 font-semibold">{{ dojo.name }}</strong></h2><br>
+            <h3><address class="not-italic mt-2">{{ dojo.address | replace('\n', '<br>') | safe }}</address></h3>
+        </div>
+        
+        <div class="flex flex-col gap-4 mb-8" role="group" aria-label="Map navigation options">
+            <a href="#" 
+               class="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white p-4 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-2 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2" 
+               id="appleMaps" 
+               data-service="apple"
+               role="button"
+               tabindex="0">
+                <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                <span class="relative z-10" aria-hidden="true">📍</span>
+                <span class="relative z-10">Open in Apple Maps</span>
+            </a>
+            
+            <a href="#" 
+               class="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white p-4 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-2 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2" 
+               id="googleMaps" 
+               data-service="google"
+               role="button"
+               tabindex="0">
+                <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                <span class="relative z-10" aria-hidden="true">🗺️</span>
+                <span class="relative z-10">Open in Google Maps</span>
+            </a>
+            
+            <a href="#" 
+               class="group relative overflow-hidden bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white p-4 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-2 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2" 
+               id="waze" 
+               data-service="waze"
+               role="button"
+               tabindex="0">
+                <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                <span class="relative z-10" aria-hidden="true">🚗</span>
+                <span class="relative z-10">Open in Waze</span>
+            </a>
+        </div>
+        
+        <div class="hidden p-4 bg-blue-50 border-l-4 border-blue-400 rounded-lg text-sm" id="autoRedirect" role="alert">
+            <div class="flex items-center gap-3">
+                <div class="w-5 h-5 border-3 border-gray-300 border-t-blue-500 rounded-full animate-spin" aria-hidden="true"></div>
+                <div>
+                    <p class="text-gray-700">Detecting your device... Redirecting in <span class="font-bold text-blue-600" id="countdown">3</span> seconds</p>
+                    <small class="text-gray-500">Tap any button above to choose manually</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="text-gray-600 text-sm mb-3">Need help finding us?</p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                <a href="tel:{{ dojo.phone }}" 
+                   class="text-dojo-accent font-semibold hover:text-dojo-accent/80 transition-colors duration-200 text-sm flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-dojo-accent focus:ring-offset-2 rounded px-2 py-1">
+                    <span aria-hidden="true">📞</span>
+                    {{ dojo.phone }}
+                </a>
+                {% if dojo.email %}
+                <a href="mailto:{{ dojo.email }}" 
+                   class="text-dojo-accent font-semibold hover:text-dojo-accent/80 transition-colors duration-200 text-sm flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-dojo-accent focus:ring-offset-2 rounded px-2 py-1">
+                    <span aria-hidden="true">✉️</span>
+                    Email Us
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Social Media Links -->
+        {% if social.instagram or social.facebook or social.twitter %}
+        <div class="mt-6 pt-4 border-t border-gray-200">
+            <p class="text-gray-600 text-xs mb-3">Follow us</p>
+            <div class="flex justify-center gap-4">
+                {% if social.instagram %}
+                <a href="https://instagram.com/{{ social.instagram | replace('@', '') }}" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="text-gray-400 hover:text-pink-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 rounded p-1"
+                   aria-label="Follow us on Instagram">
+                    <span aria-hidden="true">📷</span>
+                </a>
+                {% endif %}
+                {% if social.facebook %}
+                <a href="https://facebook.com/{{ social.facebook }}" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="text-gray-400 hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 rounded p-1"
+                   aria-label="Follow us on Facebook">
+                    <span aria-hidden="true">👥</span>
+                </a>
+                {% endif %}
+                {% if social.twitter %}
+                <a href="https://twitter.com/{{ social.twitter | replace('@', '') }}" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="text-gray-400 hover:text-blue-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 rounded p-1"
+                   aria-label="Follow us on Twitter">
+                    <span aria-hidden="true">🐦</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    <!-- Loading overlay -->
+    <div class="hidden absolute inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center z-50" id="loadingOverlay">
+        <div class="text-center">
+            <div class="w-8 h-8 border-3 border-gray-300 border-t-dojo-primary rounded-full animate-spin mx-auto mb-3"></div>
+            <p class="text-gray-700 font-medium">Opening maps...</p>
+        </div>
+    </div>
+</main>
+
+<!-- Pass data to JavaScript -->
+<script>
+    window.DOJO_CONFIG = {
+        address: "{{ dojo.address }}",
+        lat: "{{ dojo.coordinates.lat }}",
+        lng: "{{ dojo.coordinates.lng }}",
+        name: "{{ dojo.name }}",
+        phone: "{{ dojo.phone }}",
+        analytics: {
+            ga_id: "{{ analytics.google_analytics_id }}",
+            pixel_id: "{{ analytics.meta_pixel_id }}"
+        }
+    };
+</script>

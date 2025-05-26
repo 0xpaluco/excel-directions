@@ -1,0 +1,30 @@
+collections:
+  dojo_settings:
+    name: "Dojo Settings"
+    description: "Configure your dojo information and settings"
+    store: "src/_data.yml"
+    fields:
+      - name: dojo
+        type: object
+        fields:
+          - { name: name, type: string, label: "Dojo Name" }
+          - { name: address, type: text, label: "Full Address" }
+          - name: coordinates
+            type: object
+            fields:
+              - { name: lat, type: string, label: "Latitude" }
+              - { name: lng, type: string, label: "Longitude" }
+          - { name: phone, type: string, label: "Phone Number" }
+          - { name: description, type: text, label: "Description" }
+      
+      - name: analytics
+        type: object
+        fields:
+          - { name: google_analytics_id, type: string, label: "Google Analytics ID" }
+          - { name: meta_pixel_id, type: string, label: "Meta Pixel ID" }
+      
+      - name: social
+        type: object
+        fields:
+          - { name: instagram, type: string, label: "Instagram Handle" }
+          - { name: facebook, type: string, label: "Facebook Page" }

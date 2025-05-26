@@ -1,0 +1,35 @@
+{
+  "imports": {
+    "lume/": "https://deno.land/x/lume@v3.0.2/",
+    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@0.11.5/"
+  },
+  "tasks": {
+    "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
+    "build": "deno task lume",
+    "serve": "deno task lume -s",
+    "dev": "deno task lume -s --watch",
+    "cms": "deno task lume cms",
+    "clean": "rm -rf dist",
+    "deploy": "deno task build && echo 'Ready for deployment!'",
+    "lighthouse": "lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-report.html",
+    "test": "deno test --allow-all tests/"
+  },
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["deno.window", "dom", "dom.iterable", "es2022"],
+    "strict": true,
+    "types": [
+      "lume/types.ts"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "lume"
+  },
+  "unstable": [
+    "temporal"
+  ],
+  "lint": {
+    "plugins": [
+      "https://deno.land/x/lume@v3.0.2/lint.ts"
+    ]
+  }
+}

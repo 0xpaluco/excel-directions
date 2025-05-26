@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://directions.mydojo.com/sitemap.xml
+
+# Crawl delay for respectful bots
+Crawl-delay: 1
