@@ -21,6 +21,6 @@ site:
   title: "Find Our Dojo"
   description: "Get directions to Excel Combat Academy - never get lost again!"
   # url: "https://directions.excelcombat.com"
-  url: "http://localhost:3000"
+  url: "https://lightsteelblue-pheasant-134474.hostingersite.com/"
   logo: "/static/logo.png"
   author: "Excel Combat Academy"
