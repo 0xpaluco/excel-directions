@@ -13,7 +13,7 @@ import robots from "lume/plugins/robots.ts";
 
 const site = lume({
   src: "./src",
-  location: new URL("https://lightsteelblue-pheasant-134474.hostingersite.com/"),
+  location: new URL("https://comfy-pothos-b455ad.netlify.app"),
   cssFile: "/styles.css",
 });
 
