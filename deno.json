@@ -9,7 +9,7 @@
     "serve": "deno task lume -s",
     "dev": "deno task lume -s --watch",
     "cms": "deno task lume cms",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf _site",
     "deploy": "deno task build && echo 'Ready for deployment!'",
     "lighthouse": "lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-report.html",
     "test": "deno test --allow-all tests/"

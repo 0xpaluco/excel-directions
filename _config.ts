@@ -13,7 +13,6 @@ import robots from "lume/plugins/robots.ts";
 
 const site = lume({
   src: "./src",
-  dest: "./dist",
   location: new URL("https://lightsteelblue-pheasant-134474.hostingersite.com/"),
   cssFile: "/styles.css",
 });
@@ -22,37 +21,7 @@ site.use(nunjucks(/* Options */));
 site.use(icons());
 
 // Tailwind CSS 4 configuration
-site.use(tailwindcss({
-  options: {
-    theme: {
-      extend: {
-        colors: {
-          'dojo-primary': '#1a4a5c',
-          'dojo-secondary': '#d2691e',
-          'dojo-accent': '#2c7a8c',
-        },
-        animation: {
-          'float': 'float 3s ease-in-out infinite',
-          'shimmer': 'shimmer 2s linear infinite',
-          'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        },
-        keyframes: {
-          float: {
-            '0%, 100%': { transform: 'translateY(0px)' },
-            '50%': { transform: 'translateY(-10px)' },
-          },
-          shimmer: {
-            '0%': { transform: 'translateX(-100%)' },
-            '100%': { transform: 'translateX(100%)' },
-          },
-        },
-        fontFamily: {
-          'sans': ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        },
-      },
-    },
-  },
-}));
+site.use(tailwindcss());
 
 
 site.use(postcss());
